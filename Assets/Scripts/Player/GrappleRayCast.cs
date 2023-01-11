@@ -5,21 +5,20 @@ using UnityEngine.InputSystem;
 
 public class GrappleRayCast : MonoBehaviour
 {
-    RaycastHit2D ray;
+    public RaycastHit2D ray;
     Vector3 mousePosition; //position of mouse
     Vector3 worldPosition; //mousePosition converted to worldPosition format
 
 
     void Start()
     {
-        Ray2D ray2 = new Ray2D(transform.position, transform.forward);
+
 
     }
 
 
     void Update()
     {
-        //    worldPos = mainCam.ScreenToWorldPoint(Mouse.current.position);
 
         mousePosition = Mouse.current.position.ReadValue(); // gets mouse cursor coordinates
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition); // converts mouse coordinates to world point coordinates vector3
@@ -31,6 +30,5 @@ public class GrappleRayCast : MonoBehaviour
         Debug.Log(ray.collider.name);
     }
 
-        //Debug.Log(worldPosition - transform.position);
     }
 }
