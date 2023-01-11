@@ -5,23 +5,24 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
 
-    //use lineRenderer to draw line from player to ray collider
-
-
-
+    LineRenderer lineRenderer;
     GrappleRayCast grappleRayCast;
+    RaycastHit2D ray;
 
     void Start()
     {
+        grappleRayCast = GetComponentInChildren<GrappleRayCast>();
+        lineRenderer = GetComponent<LineRenderer>();
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if(grappleRayCast.ray.collider != null)
-        //{
-        //Debug.Log(grappleRayCast.ray.collider + " from new script");
-        //}
+        ray = grappleRayCast.ray;
+        if(ray.collider != null)
+        {
+            Debug.Log("Grapple to " + ray.collider.name);
+        }
     }
 }
