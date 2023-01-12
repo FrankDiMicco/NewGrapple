@@ -7,6 +7,8 @@ public class GrappleRayCast : MonoBehaviour
 {
     //This script is a component to RayPoint, a child of Player
 
+    float drawRayTime = 1.5f;
+
     public RaycastHit2D ray;
     Vector3 mousePosition; //position of mouse
     Vector3 worldPosition; //mousePosition converted to worldPosition format
@@ -18,8 +20,7 @@ public class GrappleRayCast : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition); // converts mouse coordinates to world point coordinates vector3
         ray = Physics2D.Raycast(transform.position, worldPosition - transform.position, 10f); //cast ray in direction of mouse
 
-       //Vector3 forward = transform.TransformDirection(Vector3.forward) * 100;
-       //Debug.DrawRay(transform.position, forward, Color.green, 1000f);
+       // Debug.DrawRay(transform.position, worldPosition - transform.position, Color.green, drawRayTime);
        
 
     }
