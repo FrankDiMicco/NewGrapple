@@ -14,26 +14,32 @@ public class PlayerMovementBasic : MonoBehaviour
 //Variable jump height
 //Must add “Press and Release” interaction to “Jump” action in Input Manager
 
-    public Vector2 moveInput;
+    public Vector2 moveInput; //gets input from input system for movement/mouse clicks
     Rigidbody2D rb;
     public float fallMultiplier = -0.3f;
 
     Grapple grapple; //Grappling mechanics in Grapple Script
+    GrappleRayCast grappleRayCast; //To get ray from GrappleRayCast script.  
+    RaycastHit2D ray; //To store ray from GrappleRayCast script
 
     [SerializeField] float moveSpeed = 6;
     [SerializeField] float jumpForce = 12;
-    [SerializeField] Vector3 boxSize;
-    [SerializeField] float boxOffset;
-    [SerializeField] LayerMask layerMask;
+    [SerializeField] Vector3 boxSize; //Size of box to check to see if player is grounded
+    [SerializeField] float boxOffset; //To position box used to check to see if player is gounded
+    [SerializeField] LayerMask layerMask; //To see if box is touching Ground layer
 
     void Start()
     {
-         rb = GetComponent<Rigidbody2D>();
-         grapple = GetComponent<Grapple>();
+        rb = GetComponent<Rigidbody2D>();
+        grapple = GetComponent<Grapple>();
+        grappleRayCast = GetComponentInChildren<GrappleRayCast>();
+
     }
 
     void Update() {
 
+        ray = grappleRayCast.ray;
+        
     }
 
     void FixedUpdate() {
@@ -43,14 +49,14 @@ public class PlayerMovementBasic : MonoBehaviour
 
     public void OnMove(InputValue value){
         moveInput = value.Get<Vector2>();
-        //Debug.Log(moveInput);
     }
 
     public void OnFire(InputValue value)
     {
         if(value.Get<float>() == 1)
         {
-            grapple.ShootGrapple();
+
+            grapple.ShootGrapple(ray);
         }
         else
         {
