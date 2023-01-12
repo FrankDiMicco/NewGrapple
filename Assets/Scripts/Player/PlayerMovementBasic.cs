@@ -18,6 +18,8 @@ public class PlayerMovementBasic : MonoBehaviour
     Rigidbody2D rb;
     public float fallMultiplier = -0.3f;
 
+    Grapple grapple; //Grappling mechanics in Grapple Script
+
     [SerializeField] float moveSpeed = 6;
     [SerializeField] float jumpForce = 12;
     [SerializeField] Vector3 boxSize;
@@ -27,6 +29,7 @@ public class PlayerMovementBasic : MonoBehaviour
     void Start()
     {
          rb = GetComponent<Rigidbody2D>();
+         grapple = GetComponent<Grapple>();
     }
 
     void Update() {
@@ -41,6 +44,19 @@ public class PlayerMovementBasic : MonoBehaviour
     public void OnMove(InputValue value){
         moveInput = value.Get<Vector2>();
         //Debug.Log(moveInput);
+    }
+
+    public void OnFire(InputValue value)
+    {
+        if(value.Get<float>() == 1)
+        {
+            grapple.ShootGrapple();
+        }
+        else
+        {
+            grapple.StopGrapple();
+        }
+
     }
 
     public bool GroundCheck(){

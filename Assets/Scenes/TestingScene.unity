@@ -399,6 +399,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8752112393608984017, guid: de25788f62d0685468b2ec7b93753514, type: 3}
   m_PrefabInstance: {fileID: 8752112393328539020}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &1351236607 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8752112393608984046, guid: de25788f62d0685468b2ec7b93753514, type: 3}
+  m_PrefabInstance: {fileID: 8752112393328539020}
+  m_PrefabAsset: {fileID: 0}
 --- !u!120 &1351236611
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -498,6 +503,26 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!231 &1351236612
+SpringJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351236600}
+  m_Enabled: 0
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 1351236607}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 1
+  m_Distance: 0.005
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &1651247171
 GameObject:
   m_ObjectHideFlags: 0
