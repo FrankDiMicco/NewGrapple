@@ -26,7 +26,7 @@ public class GrappleRayCast : MonoBehaviour
         worldPosition = Camera.main.ScreenToWorldPoint(mousePosition); // converts mouse coordinates to world point coordinates vector3
         ray = Physics2D.Raycast(transform.position, worldPosition - transform.position, rayCastLength, groundLayer); //cast ray in direction of mouse
 
-       // Debug.DrawRay(transform.position, worldPosition - transform.position, Color.green, 1.5f);
+       //Debug.DrawRay(transform.position, worldPosition - transform.position, Color.green, 1.5f);
        
     }
 }

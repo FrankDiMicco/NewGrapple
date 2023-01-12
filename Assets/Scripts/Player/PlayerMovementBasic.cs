@@ -21,6 +21,7 @@ public class PlayerMovementBasic : MonoBehaviour
     Grapple grapple; //Grappling mechanics in Grapple Script
     GrappleRayCast grappleRayCast; //To get ray from GrappleRayCast script.  
     RaycastHit2D ray; //To store ray from GrappleRayCast script
+    public bool isGrounded;
 
     [SerializeField] float moveSpeed = 6;
     [SerializeField] float jumpForce = 12;
@@ -39,6 +40,7 @@ public class PlayerMovementBasic : MonoBehaviour
     void Update() {
 
         ray = grappleRayCast.ray;
+        isGrounded = GroundCheck();
         
     }
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Grapple : MonoBehaviour
 {
 
-    bool isGrappling = false;
+    public bool isGrappling = false;
+    public float ropeLength = 10f;
     
     LineRenderer lineRenderer;
     SpringJoint2D springJoint;
@@ -22,16 +23,13 @@ public class Grapple : MonoBehaviour
         springJoint = GetComponent<SpringJoint2D>();
         grappleStart = GetComponentInChildren<Transform>();
         lineRenderer.enabled = false;
-        springJoint.enabled = false;
-
-        
+        springJoint.enabled = false; 
     }
-
 
     void Update()
     {
         ray = grappleRayCast.ray;
-        lineRenderer.SetPosition(0, grappleStart.position); //line renderer start point
+        lineRenderer.SetPosition(0, grappleStart.position); //line renderer start point 
 
 
 
@@ -51,12 +49,19 @@ public class Grapple : MonoBehaviour
     {
         if(isGrappling == false && ray.collider != null)
         {
-            lineRenderer.SetPosition(1, ray.point);       // line renderer second point
-            lineRenderer.enabled = true; 
-            springJoint.enabled = true;
-            springJoint.connectedBody = GameObject.Find(ray.collider.name).GetComponent<Rigidbody2D>();
-            springJoint.anchor = transform.position;
-            isGrappling = true;
+            if(ray.distance<ropeLength)
+            {
+                lineRenderer.SetPosition(1, ray.point);       // line renderer second point
+                lineRenderer.enabled = true; 
+                springJoint.enabled = true;
+               // springJoint.distance = 2f; //ray.distance;
+                springJoint.connectedBody = GameObject.Find(ray.collider.name).GetComponent<Rigidbody2D>();
+                springJoint.connectedAnchor = ray.point;
+                isGrappling = true;
+             
+            }
+
+
         }
 
 
