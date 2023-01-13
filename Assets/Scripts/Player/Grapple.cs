@@ -7,6 +7,7 @@ public class Grapple : MonoBehaviour
 
     public bool isGrappling = false;
     public float ropeLength = 10f;
+    Rigidbody2D rb;
     
     LineRenderer lineRenderer;
     SpringJoint2D springJoint;
@@ -18,10 +19,12 @@ public class Grapple : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         grappleRayCast = GetComponentInChildren<GrappleRayCast>();
         lineRenderer = GetComponent<LineRenderer>();
         springJoint = GetComponent<SpringJoint2D>();
-        grappleStart = GetComponentInChildren<Transform>();
+        //grappleStart = GetComponentInChildren<Transform>();
+        grappleStart = GameObject.Find("RayPoint").transform;
         lineRenderer.enabled = false;
         springJoint.enabled = false; 
     }
@@ -29,16 +32,22 @@ public class Grapple : MonoBehaviour
     void Update()
     {
         ray = grappleRayCast.ray;
-        lineRenderer.SetPosition(0, grappleStart.position); //line renderer start point 
+        lineRenderer.SetPosition(0, grappleStart.position); //line renderer start point to always stay with player
 
 
+        if(isGrappling)
+        {
+            rb.gravityScale = 10;
+            rb.mass = 100;
+        }
+        else{
+            rb.gravityScale = 2;
+        }
 
-
-
- //           if(hit.distance<lengthOfRope){
- //               playerSpringJoint.distance = hit.distance;  //if grapple distance is to playform, make rope short
+ //           if(hit.distance<ropeLength){
+ //               springJoint.distance = hit.distance;  //if grapple distance is to playform, make rope short
  //           } else{
-//                playerSpringJoint.distance = lengthOfRope;  //make distance joint length to full length of rope
+//                springJoint.distance = ropeLength;  //make distance joint length to full length of rope
  //           }
 
 
@@ -57,8 +66,7 @@ public class Grapple : MonoBehaviour
                // springJoint.distance = 2f; //ray.distance;
                 springJoint.connectedBody = GameObject.Find(ray.collider.name).GetComponent<Rigidbody2D>();
                 springJoint.connectedAnchor = ray.point;
-                isGrappling = true;
-             
+                isGrappling = true;             
             }
 
 
