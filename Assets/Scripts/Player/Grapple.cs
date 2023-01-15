@@ -34,16 +34,6 @@ public class Grapple : MonoBehaviour
         ray = grappleRayCast.ray;
         lineRenderer.SetPosition(0, grappleStart.position); //line renderer start point to always stay with player
 
-
-        if(isGrappling)
-        {
-            rb.gravityScale = 10;
-            rb.mass = 100;
-        }
-        else{
-            rb.gravityScale = 2;
-        }
-
  //           if(hit.distance<ropeLength){
  //               springJoint.distance = hit.distance;  //if grapple distance is to playform, make rope short
  //           } else{

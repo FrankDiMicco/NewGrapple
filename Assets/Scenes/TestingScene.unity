@@ -442,7 +442,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: 0, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -516,8 +516,8 @@ SpringJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
   m_Distance: 2
-  m_DampingRatio: 0.85
-  m_Frequency: 2
+  m_DampingRatio: 0
+  m_Frequency: 1
 --- !u!1 &1651247171
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +978,22 @@ PrefabInstance:
     - target: {fileID: 8752112393608984019, guid: de25788f62d0685468b2ec7b93753514, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752112393608984040, guid: de25788f62d0685468b2ec7b93753514, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752112393608984040, guid: de25788f62d0685468b2ec7b93753514, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752112393608984042, guid: de25788f62d0685468b2ec7b93753514, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8752112393608984046, guid: de25788f62d0685468b2ec7b93753514, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de25788f62d0685468b2ec7b93753514, type: 3}

@@ -41,6 +41,7 @@ public class PlayerMovementBasic : MonoBehaviour
 
         ray = grappleRayCast.ray;
         isGrounded = GroundCheck();
+        Debug.Log(rb.velocity.y);
         
     }
 
@@ -84,8 +85,13 @@ public class PlayerMovementBasic : MonoBehaviour
     }
 
     void Walk(){
+        
+        if(!grapple.isGrappling)
+        {
         Vector2 playerVelocity = new Vector2(moveInput.x *moveSpeed, rb.velocity.y);
         rb.velocity = playerVelocity; 
+        }
+        
     }
 
     void OnJump(InputValue value){
